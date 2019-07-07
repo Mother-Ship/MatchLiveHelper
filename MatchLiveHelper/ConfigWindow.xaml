@@ -7,15 +7,14 @@
         mc:Ignorable="d"
         Title="操作台" Height="188.963" Width="280" Loaded="windowLoad" Closed="windowClose"
 		Top="720" Left="600">
-	<Grid>
-        <Button Name="redBanBtn" Content="红队Ban" HorizontalAlignment="Left" Height="20" Margin="216,3,0,0" VerticalAlignment="Top" Width="52"/>
-        <Button Name="redPickBtn" Content="红队选" HorizontalAlignment="Left" Height="20" Margin="159,3,0,0" VerticalAlignment="Top" Width="52"/>
-        <Button Name="blueBanBtn" Content="蓝队Ban" HorizontalAlignment="Left" Height="20" Margin="216,35,0,0" VerticalAlignment="Top" Width="52"/>
-        <Button Name="bluePickBtn" Content="蓝队选" HorizontalAlignment="Left" Height="20" Margin="159,35,0,0" VerticalAlignment="Top" Width="52"/>
-        <Button Name="redWarmUpBtn" Content="红队热手" HorizontalAlignment="Left" Height="20" Margin="99,3,0,0" VerticalAlignment="Top" Width="55"/>
-        <Button Name="bluedWarmUpBtn" Content="蓝队热手" HorizontalAlignment="Left" Height="20" Margin="99,35,0,0" VerticalAlignment="Top" Width="55"/>
-		<TextBox Name="consoleTextBox" HorizontalAlignment="Left" Height="90" Margin="4,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="264" IsReadOnly="True" />
-        <ComboBox HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Width="84"/>
+    <Grid>
+        <Button Name="blueBanBtn" Content="确认" HorizontalAlignment="Left" Height="20" Margin="111,39,0,0" VerticalAlignment="Top" Width="65" Click="BlueBanBtn_Click"/>
+        <TextBox Name="consoleTextBox" HorizontalAlignment="Left" Height="90" Margin="4,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="264" IsReadOnly="True" />
+        <ComboBox HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="84"/>
+        <ComboBox HorizontalAlignment="Left" Margin="111,10,0,0" VerticalAlignment="Top" Width="65"/>
+        <Button x:Name="blueBanBtn_Copy" Content="重置" HorizontalAlignment="Left" Height="20" Margin="189,39,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.692,0.475"/>
+        <RadioButton Content="Ban" HorizontalAlignment="Left" Margin="181,14,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Pick" HorizontalAlignment="Left" Margin="226,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.583,0.321"/>
 
     </Grid>
 </Window>
