@@ -1,0 +1,33 @@
+﻿<Window x:Class="MatchLiveHelper.MatchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MatchLiveHelper"
+   xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+        mc:Ignorable="d"
+        Title="对阵界面" Height="720" Width="1280" Top="0" Left="0"
+		WindowStyle="None"
+		AllowsTransparency="True"
+       
+		>
+   
+    <Grid>
+
+        <Image Source="/Image/background.jpg" Stretch="Fill"/>
+        <Image Name="logo" HorizontalAlignment="Center" VerticalAlignment="Top"  Stretch="None"/>
+        <Image Name="RedCircle"  Source="/Image/blue_circle.png" Height="370" Width="370" Margin="681,187,229,163" />
+        <Image Name="BlueCircle" Source="/Image/red_circle.png" Height="370" Width="370" Margin="229,187,681,163"  />
+        <Image Name="RedLogo"  Height="110" Width="110" Margin="355,269,815,341"/>
+        <Image Name="BlueLogo"  Height="110" Width="110" Margin="815,269,355,341"/>
+        <Label Content="敬请期待"  VerticalAlignment="Top"  HorizontalAlignment="Center"  FontSize="20" FontFamily="等线" Margin="0,542,0,0" Foreground="#565656" />
+        <Label Name="Stage" Content=""  VerticalAlignment="Top"  HorizontalAlignment="Center" FontSize="32" Margin="0,572,0,0" Foreground="#565656"/>
+        <Label Name="Time" Content=""  VerticalAlignment="Top"  HorizontalAlignment="Center"  FontSize="20" FontFamily="等线" Margin="0,627,0,0" Foreground="#565656"/>
+        <Label Name="RedPlayers" Content=""   FlowDirection="RightToLeft" Width="200" Height="300"  FontSize="20" FontFamily="等线" Foreground="#854a48" Margin="1,250,1079,170" />
+        <Label Name="BluePlayers" Content=""   Width="200" Height="300"  FontSize="20" FontFamily="等线" Foreground="#2c585e" Margin="1084,250,0,170" />
+        <Label Name="RedTeamName" Content=""  VerticalAlignment="Top"  FontSize="30" FontFamily="等线" Foreground="#854a48" Margin="0,400,460,0" HorizontalAlignment="Center"  />
+        <Label Name="BlueTeamName" Content=""  VerticalAlignment="Top"  FontSize="30" FontFamily="等线" Foreground="#2c585e" Margin="460,400,0,0"  HorizontalAlignment="Center" />
+        <Label  Content="蓝队"  VerticalAlignment="Top"  FontSize="24" FontFamily="等线" Foreground="#854a48" Margin="0,475,460,0" HorizontalAlignment="Center"  />
+        <Label  Content="红队"  VerticalAlignment="Top"  FontSize="24" FontFamily="等线" Foreground="#2c585e" Margin="460,475,0,0"  HorizontalAlignment="Center" />
+    </Grid>
+</Window>

@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace ShowcaseHelper.entity
 {
-    class Beatmap
+    public class Beatmap
     {
-        private string setId;
-        private string title;
-        private string mapper;
-        private string difficulty;
-
-        public string SetId { get => setId; set => setId = value; }
-        public string Mapper { get => mapper; set => mapper = value; }
-        public string Title { get => title; set => title = value; }
-        public string Difficulty { get => difficulty; set => difficulty = value; }
+        public string Mapper { get; set; }
+        public string SetId { get; set; }
+        public string Title { get; set; }
+        public string Difficulty { get; set; }
+        public string BeatmapId { get; set; }
     }
 }

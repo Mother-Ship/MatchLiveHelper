@@ -11,8 +11,10 @@ namespace MatchLiveHelper.util
 {
     class Mp5MapPoolReadUtil
     {
-        private static readonly Regex regex = new Regex(@"\s*(?<setId>\d*?)\s(?<title>.*?)\s\[(?<difficulty>.*?)]\s//\s(?<mapper>.*)");
-        public static MapPoolSet read(string fileName)
+        private static readonly Regex BEATMAP_NAME_REGEX = new Regex(@"\s*(?<setId>\d*?)\s(?<title>.*?)\s\[(?<difficulty>.*?)]\s//\s(?<mapper>.*)");
+
+
+        public static MapPoolSet Read(string fileName)
         {
             ISheet sheet = null;
             var set = new MapPoolSet();
@@ -45,27 +47,34 @@ namespace MatchLiveHelper.util
                     {
                         var row = sheet.GetRow(i);
                         if (row == null || row.GetCell(row.FirstCellNum).ToString().Equals("")) continue;
-                        
+
                         if (!row.GetCell(row.FirstCellNum).ToString().StartsWith("http"))
                         {
-                            var pool = new MapPool();
-                            pool.Map = new List<Beatmap>();
-                            pool.Type = row.GetCell(row.FirstCellNum).ToString();
+                            var pool = new MapPool
+                            {
+                                Map = new List<Beatmap>(),
+                                Type = row.GetCell(row.FirstCellNum).ToString()
+                            };
                             result.Add(pool);
                         }
                         else
                         {
-                            var raw = row.GetCell(row.FirstCellNum+1).ToString();
-                            var mc = regex.Match(raw);
+                            var raw = row.GetCell(row.FirstCellNum + 1).ToString();
+                            var mc = BEATMAP_NAME_REGEX.Match(raw);
                             if (mc.Success)
                             {
+                                var link = row.GetCell(row.FirstCellNum).ToString();
+                                var bid = link.Substring(link.LastIndexOf("/"));
                                 var pool = result[result.Count - 1];
                                 var maps = pool.Map;
-                                var map = new Beatmap();
-                                map.SetId=(mc.Groups["setId"].Value);
-                                map.Title=(mc.Groups["title"].Value);
-                                map.Difficulty=(mc.Groups["difficulty"].Value);
-                                map.Mapper=(mc.Groups["mapper"].Value);
+                                var map = new Beatmap
+                                {
+                                    SetId = (mc.Groups["setId"].Value),
+                                    Title = (mc.Groups["title"].Value),
+                                    Difficulty = (mc.Groups["difficulty"].Value),
+                                    Mapper = (mc.Groups["mapper"].Value),
+                                    BeatmapId = bid
+                                };
                                 maps.Add(map);
                             }
                         }

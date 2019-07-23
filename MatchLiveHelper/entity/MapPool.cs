@@ -2,12 +2,9 @@
 
 namespace ShowcaseHelper.entity
 {
-    class MapPool
+    public class MapPool
     {
-        private string type;
-        private List<Beatmap> map;
-
-        public string Type { get => type; set => type = value; }
-        public List<Beatmap> Map { get => map; set => map = value; }
+        public string Type { get; set; }
+        public List<Beatmap> Map { get; set; }
     }
 }

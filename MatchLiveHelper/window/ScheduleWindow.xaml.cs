@@ -17,17 +17,14 @@ using System.Windows.Shapes;
 namespace MatchLiveHelper
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// ScheduleWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ScheduleWindow : Window
     {
-        private static MapPoolSet mapPoolSet;
-        
-        public MainWindow()
+        public ScheduleWindow()
         {
             InitializeComponent();
         }
-
-        internal static MapPoolSet MapPoolSet { get => mapPoolSet; set => mapPoolSet = value; }
+        
     }
 }
