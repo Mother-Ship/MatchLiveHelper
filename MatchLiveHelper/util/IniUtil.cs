@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace ShowcaseHelper.util
+namespace MatchLiveHelper.util
 {
     class IniUtil
     {

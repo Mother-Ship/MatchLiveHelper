@@ -1,7 +1,7 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using ShowcaseHelper.entity;
+using MatchLiveHelper.entity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,7 +24,7 @@ namespace MatchLiveHelper.util
 
             try
             {
-                var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
                 if (fileName.IndexOf(".xlsx") > 0)
                 {// 2007版本
                     workbook = new XSSFWorkbook(fs);

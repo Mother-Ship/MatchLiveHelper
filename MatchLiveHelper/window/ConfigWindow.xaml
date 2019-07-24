@@ -8,15 +8,15 @@
         Title="操作台" Height="188.963" Width="280" Loaded="WindowLoad" Closed="WindowClose" ResizeMode="NoResize"
 		Top="720" Left="600">
     <Grid>
-        <Button Name="ConfirmButton" Content="确认" HorizontalAlignment="Left" Height="20" Margin="140,39,0,0" VerticalAlignment="Top" Width="65" />
+        <Button Name="ConfirmButton" Content="确认" HorizontalAlignment="Left" Height="20" Margin="140,39,0,0" VerticalAlignment="Top" Width="65" Click="MapPoolOperation"/>
         <TextBox Name="ConsoleTextBox" HorizontalAlignment="Left" Height="120" Margin="4,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="271" IsReadOnly="True" />
-        <ComboBox Name="WindowComboBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="84" SelectionChanged="WindowSwitch">
+        <ComboBox SelectedValuePath="Content" Name="WindowComboBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="84" SelectionChanged="WindowSwitch">
             <ComboBoxItem IsSelected="True">对阵界面</ComboBoxItem>
             <ComboBoxItem >图池界面</ComboBoxItem>
             <ComboBoxItem>赛程界面</ComboBoxItem>
             <ComboBoxItem>歌曲界面</ComboBoxItem>
         </ComboBox>
-        <ComboBox Name="TeamComboBox" HorizontalAlignment="Left" Margin="107,10,0,0" VerticalAlignment="Top" Width="65" SelectionChanged="TeamSwitch">
+        <ComboBox SelectedValuePath="Content" Name="TeamComboBox" HorizontalAlignment="Left" Margin="107,10,0,0" VerticalAlignment="Top" Width="65">
             <ComboBoxItem IsSelected="True">红队</ComboBoxItem>
             <ComboBoxItem >蓝队</ComboBoxItem>
         </ComboBox>

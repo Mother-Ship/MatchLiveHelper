@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ShowcaseHelper.entity
+namespace MatchLiveHelper.entity
 {
     public class MapPoolSet
     {
