@@ -6,11 +6,14 @@
         xmlns:local="clr-namespace:MatchLiveHelper"
         mc:Ignorable="d"
         Title="主窗口" Height="720" Width="1280" Top="0" Left="0"
-		WindowStyle="None"
-		AllowsTransparency="True"
-		Opacity="0.2">
+		WindowStyle="None" Loaded="Init" Topmost="True"
+		AllowsTransparency="True" Background="Transparent" >
     <Grid>
-        
+        <Image Source="/Image/map_pool_bg.png"/>
 
+        <Image Name="logo" HorizontalAlignment="Center" VerticalAlignment="Top"  Stretch="None"/>
+
+
+      
     </Grid>
 </Window>

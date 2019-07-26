@@ -21,6 +21,14 @@ namespace MatchLiveHelper
     /// </summary>
     public partial class SongInfoWindow : Window
     {
-
+        public SongInfoWindow()
+        {
+            InitializeComponent();
+            
+        }
+        public void Init(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

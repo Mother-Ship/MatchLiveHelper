@@ -25,6 +25,16 @@ namespace MatchLiveHelper
         {
             InitializeComponent();
         }
+        public void Init(object sender, EventArgs e) {
+            schedule.Source = Constant.Schedule;
+            schedule.Margin = new Thickness(0, 28, 0, 0);
+            
+            logo.Source = Constant.MatchLogo;
+            logo.Width = Constant.MatchLogo.Width;
+            logo.Height = Constant.MatchLogo.Height;
+            
+           
+        }
         
     }
 }

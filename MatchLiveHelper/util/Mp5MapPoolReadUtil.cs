@@ -24,7 +24,7 @@ namespace MatchLiveHelper.util
 
             try
             {
-                var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+                var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 if (fileName.IndexOf(".xlsx") > 0)
                 {// 2007版本
                     workbook = new XSSFWorkbook(fs);
@@ -64,7 +64,7 @@ namespace MatchLiveHelper.util
                             if (mc.Success)
                             {
                                 var link = row.GetCell(row.FirstCellNum).ToString();
-                                var bid = link.Substring(link.LastIndexOf("/"));
+                                var bid = link.Substring(link.LastIndexOf("/")+1);
                                 var pool = result[result.Count - 1];
                                 var maps = pool.Map;
                                 var map = new Beatmap

@@ -4,26 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        WindowStyle="None"   AllowsTransparency="True" 
-        Title="操作台" Height="188.963" Width="280" Loaded="WindowLoad" Closed="WindowClose" ResizeMode="NoResize"
+        WindowStyle="None"   AllowsTransparency="True" Topmost="True"
+        Title="操作台" Height="200" Width="280" Loaded="Init" Closed="WindowClose" ResizeMode="NoResize"
 		Top="720" Left="600">
     <Grid>
-        <Button Name="ConfirmButton" Content="确认" HorizontalAlignment="Left" Height="20" Margin="140,39,0,0" VerticalAlignment="Top" Width="65" Click="MapPoolOperation"/>
+        <Button Name="ConfirmButton" Content="确认" HorizontalAlignment="Left" Height="20" Margin="89,40,0,0" VerticalAlignment="Top" Width="43" Click="MapPoolOperation" RenderTransformOrigin="0.709,0.469"/>
         <TextBox Name="ConsoleTextBox" HorizontalAlignment="Left" Height="120" Margin="4,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="271" IsReadOnly="True" />
-        <ComboBox SelectedValuePath="Content" Name="WindowComboBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="84" SelectionChanged="WindowSwitch">
+        <ComboBox SelectedValuePath="Content" Name="WindowComboBox" HorizontalAlignment="Left" Margin="4,8,0,0" VerticalAlignment="Top" Width="79" SelectionChanged="WindowSwitch">
             <ComboBoxItem IsSelected="True">对阵界面</ComboBoxItem>
-            <ComboBoxItem >图池界面</ComboBoxItem>
             <ComboBoxItem>赛程界面</ComboBoxItem>
+            <ComboBoxItem >图池界面</ComboBoxItem>
             <ComboBoxItem>歌曲界面</ComboBoxItem>
         </ComboBox>
-        <ComboBox SelectedValuePath="Content" Name="TeamComboBox" HorizontalAlignment="Left" Margin="107,10,0,0" VerticalAlignment="Top" Width="65">
-            <ComboBoxItem IsSelected="True">红队</ComboBoxItem>
-            <ComboBoxItem >蓝队</ComboBoxItem>
-        </ComboBox>
-        <Button Name="ResetButton" Content="重置" HorizontalAlignment="Left" Height="20" Margin="210,39,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.692,0.475"/>
-        <RadioButton Name="BanRadio" Content="Ban" HorizontalAlignment="Left" Margin="177,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.317,0.429"/>
-        <RadioButton Name ="PickRadio" Content="Pick" HorizontalAlignment="Left" Margin="223,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.31,0.393"/>
-        <Label Content="MP5直播助手控制台" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="125"/>
+        <Button Name="ResetButton" Content="重置" HorizontalAlignment="Left" Height="20" Margin="142,40,0,0" VerticalAlignment="Top" Width="43" RenderTransformOrigin="0.692,0.475"  Click="MapPoolStatusReset"/>
+        <RadioButton Name="BanRadio" GroupName="Operation" IsChecked="True" Content="禁用" HorizontalAlignment="Left" Margin="142,4,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.317,0.429"/>
+        <RadioButton Name ="PickRadio" GroupName="Operation" Content="选择" HorizontalAlignment="Left" Margin="142,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.31,0.393"/>
+        <Label Content="MP5直播助手" HorizontalAlignment="Left" Margin="196,35,0,0" VerticalAlignment="Top" Width="84"/>
+        <RadioButton x:Name="RedTeamRadio" GroupName="Team"  IsChecked="True" Content="红队" HorizontalAlignment="Left" Margin="87,4,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.317,0.429"/>
+        <RadioButton x:Name ="BlueTeamRadio" GroupName="Team" Content="蓝队" HorizontalAlignment="Left" Margin="87,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.31,0.393"/>
+        <Button Content="x" HorizontalAlignment="Left" Height="18" Margin="252,4,0,0" VerticalAlignment="Top" Width="18" Click="Close"/>
+        <Button Content="去除osu!置顶" HorizontalAlignment="Left" Margin="4,40,0,0" VerticalAlignment="Top" Click="OptimizeWindow" Width="79"/>
 
     </Grid>
 </Window>

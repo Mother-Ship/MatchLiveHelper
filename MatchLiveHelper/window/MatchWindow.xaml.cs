@@ -15,7 +15,7 @@ namespace MatchLiveHelper
             InitializeComponent();
         }
 
-        public void Init()
+        public void Init(object sender, EventArgs e)
         {
             logo.Source = Constant.MatchLogo;
             logo.Width = Constant.MatchLogo.Width;
@@ -34,7 +34,7 @@ namespace MatchLiveHelper
             Stage.Content = Constant.Stage;
             RotateBlue();
             RotateRed();
-            Show();
+          
         }
 
         public void RotateBlue()

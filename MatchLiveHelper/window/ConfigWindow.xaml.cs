@@ -4,7 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using System.Xml;
 
 namespace MatchLiveHelper
 {
@@ -13,6 +17,10 @@ namespace MatchLiveHelper
     /// </summary>
     public partial class ConfigWindow : Window
     {
+        private const double MAPPOOL_IMAGE_WIDTH = 375;
+        private const double MAPPOOL_IMAGE_HEIGHT = 50;
+        private const double BANNED_OPACITY = 0.8;
+        private const double UNCHECKED_OPACITY = 0.5;
         private MapPoolWindow mapPoolWindow = new MapPoolWindow();
         private MatchWindow matchWindow = new MatchWindow();
         private ScheduleWindow scheduleWindow = new ScheduleWindow();
@@ -21,14 +29,12 @@ namespace MatchLiveHelper
         private const string MAP_POOL_WINDOW = "图池界面";
         private const string SCHEDULE_WINDOW = "赛程界面";
         private const string SONG_INFO_WINDOW = "歌曲界面";
+        private const string RED_TEAM = "红队";
+        private const string BLUE_TEAM = "蓝队";
 
         private Window activeWindow;
 
-        private const double WINDOW_WIDTH = 1280;
-        private const double MAPPOOL_IMAGE_WIDTH = 375;
-        private const double MAPPOOL_IMAGE_HEIGHT = 50;
-        private const double MAPPOOL_IMAGE_VERTICAL_SPACE = 10;
-        private const double MAPPOOL_IMAGE_HORIZONAL_SPACE = 18;
+
 
 
         public ConfigWindow()
@@ -38,16 +44,18 @@ namespace MatchLiveHelper
         }
         private void WindowClose(object sender, EventArgs e)
         {
-            Application.Current.Shutdown();
+            Environment.Exit(0);
         }
 
-        private void WindowLoad(object sender, EventArgs e)
+        private void Init(object sender, EventArgs e)
         {
 
             //禁用所有组件
-            ConfirmButton.IsEnabled = false;
+
             WindowComboBox.IsEnabled = false;
-            TeamComboBox.IsEnabled = false;
+            ConfirmButton.IsEnabled = false;
+            RedTeamRadio.IsEnabled = false;
+            BlueTeamRadio.IsEnabled = false;
             ResetButton.IsEnabled = false;
             BanRadio.IsEnabled = false;
             PickRadio.IsEnabled = false;
@@ -59,12 +67,15 @@ namespace MatchLiveHelper
             ReadData();
 
             //初始化对阵界面
-            matchWindow.Init();
+            matchWindow.Show();
             activeWindow = matchWindow;
 
             //输出提示语
             Console.WriteLine("初始化完成！");
             WindowComboBox.IsEnabled = true;
+
+
+
 
 
         }
@@ -80,132 +91,133 @@ namespace MatchLiveHelper
             }
             activeWindow.Visibility = Visibility.Hidden;
 
+            ConfirmButton.IsEnabled = false;
+            RedTeamRadio.IsEnabled = false;
+            BlueTeamRadio.IsEnabled = false;
+            ResetButton.IsEnabled = false;
+            BanRadio.IsEnabled = false;
+            PickRadio.IsEnabled = false;
+
             switch (WindowComboBox.SelectedValue.ToString())
             {
                 case MATCH_WINDOW:
-                    matchWindow.Init();
                     activeWindow = matchWindow;
                     break;
-                case MAP_POOL_WINDOW:
-                    //根据图池是否需要换行，以及是否是下一个MOD图池来切换纵坐标
-                    double y = 140;
-
-                    //根据图池谱面数量不同，计算出水平居中的横坐标
-                    double x;
-
-                    var coordinate = new List<Point>();
-
-                    Constant.MapPoolSet.Pool.ForEach(
-                    pool =>
-                    {
-
-                        bool end = false;
-                        int count = pool.Map.Count;
-                        while (!end)
-                        {
-
-                            end = count < 3;
-
-                            switch (count)
-                            {
-                                case 1:
-
-                                    x = (WINDOW_WIDTH - MAPPOOL_IMAGE_WIDTH) / 2;
-                                    coordinate.Add(new Point(x, y));
-                                    break;
-                                case 2:
-
-                                    x = WINDOW_WIDTH / 2 - MAPPOOL_IMAGE_WIDTH - MAPPOOL_IMAGE_HORIZONAL_SPACE / 2;
-                                    coordinate.Add(new Point(x, y));
-
-                                    x += MAPPOOL_IMAGE_WIDTH + MAPPOOL_IMAGE_HORIZONAL_SPACE;
-                                    coordinate.Add(new Point(x, y));
-                                    break;
-                                case 3:
-                                    x = (WINDOW_WIDTH - MAPPOOL_IMAGE_WIDTH) / 2 - MAPPOOL_IMAGE_HORIZONAL_SPACE - MAPPOOL_IMAGE_WIDTH;
-                                    coordinate.Add(new Point(x, y));
-
-                                    x += MAPPOOL_IMAGE_WIDTH + MAPPOOL_IMAGE_HORIZONAL_SPACE;
-                                    coordinate.Add(new Point(x, y));
-
-                                    x += MAPPOOL_IMAGE_WIDTH + MAPPOOL_IMAGE_HORIZONAL_SPACE;
-                                    coordinate.Add(new Point(x, y));
-                                    break;
-                                default:
-                                    x = (WINDOW_WIDTH - MAPPOOL_IMAGE_WIDTH) / 2 - MAPPOOL_IMAGE_HORIZONAL_SPACE - MAPPOOL_IMAGE_WIDTH;
-                                    coordinate.Add(new Point(x, y));
-
-                                    x += MAPPOOL_IMAGE_WIDTH + MAPPOOL_IMAGE_HORIZONAL_SPACE;
-                                    coordinate.Add(new Point(x, y));
-
-                                    x += MAPPOOL_IMAGE_WIDTH + MAPPOOL_IMAGE_HORIZONAL_SPACE;
-                                    coordinate.Add(new Point(x, y));
-
-                                    count -= 3;
-                                    y += MAPPOOL_IMAGE_VERTICAL_SPACE;
-                                    break;
-
-                            }
-
-
-                        }
-                        //每种图池之间空一行
-                        y += MAPPOOL_IMAGE_VERTICAL_SPACE;
-                    }
-                    );
-                    int i = 0;
-                    Constant.MapPoolSet.Pool.ForEach(
-                    pool =>
-                    {
-                        pool.Map.ForEach(
-                            map=> {
-                                Image img = new Image();
-                                img.Height = MAPPOOL_IMAGE_HEIGHT;
-                                img.Width = MAPPOOL_IMAGE_WIDTH;
-                                img.Visibility = Visibility.Visible;
-                                var point = coordinate[i];
-                                Thickness th = new Thickness(point.X, point.Y, 0, 0);
-                                img.Margin = th;
-
-
-                                img.Source = Constant.BgImages[map.BeatmapId];
-                                (this.Content as Grid).Children.Add(img);
-
-                                i++;
-                               
-                            });
-                    });
-                    coordinate.ForEach(item => Console.WriteLine(item.X + " " + item.Y));
-                    break;
                 case SCHEDULE_WINDOW:
-
+                    activeWindow = scheduleWindow;
+                    break;
+                case MAP_POOL_WINDOW:
+                    ConfirmButton.IsEnabled = true;
+                    RedTeamRadio.IsEnabled = true;
+                    BlueTeamRadio.IsEnabled = true;
+                    ResetButton.IsEnabled = true;
+                    BanRadio.IsEnabled = true;
+                    PickRadio.IsEnabled = true;
+                    activeWindow = mapPoolWindow;
                     break;
                 case SONG_INFO_WINDOW:
-
+                    activeWindow = songInfoWindow;
                     break;
                 default:
                     return;
 
             }
+            activeWindow.Show();
+
         }
 
+        private void Close(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        public void OptimizeWindow(object sender, EventArgs e)
+        {
+
+            //取消osu!小窗口置顶，并且将小窗口绑定到管理器大窗口
+            TournamentModifyUtil.CancelOsuTopMost();
 
 
+        }
 
         private void MapPoolOperation(object sender, RoutedEventArgs e)
         {
-            switch (WindowComboBox.SelectedItem.ToString())
+            if (Constant.CurrentGrid == null)
             {
-                case MAP_POOL_WINDOW:
+                Console.WriteLine("你没有选择谱面！");
+                return;
+            }
+            if (Constant.CurrentGrid.Children[Constant.CurrentGrid.Children.Count - 1] is Rectangle)
+            {
+                Console.WriteLine("请不要重复操作！");
+                return;
+            }
+            Rectangle rectangle = new Rectangle();
+            rectangle.RadiusX = 25;
+            rectangle.RadiusY = 25;
+            rectangle.StrokeThickness = 5;
+            rectangle.Height = MAPPOOL_IMAGE_HEIGHT;
+            rectangle.Width = (Constant.CurrentGrid.Children[1] as Rectangle).Width;
+            rectangle.HorizontalAlignment = HorizontalAlignment.Left;
+            rectangle.VerticalAlignment = VerticalAlignment.Top;
 
-                    break;
-                default:
-                    return;
+            if (BlueTeamRadio.IsChecked == true)
+            {
+                rectangle.Stroke = Brushes.Blue;
+                BlueTeamRadio.IsChecked = false;
+                RedTeamRadio.IsChecked = true;
+            }
+            else
+            {
+                BlueTeamRadio.IsChecked = true;
+                RedTeamRadio.IsChecked = false;
+                rectangle.Stroke = Brushes.Red;
+            }
+
+
+            if (BanRadio.IsChecked == true)
+            {
+                rectangle.Fill = new SolidColorBrush(Colors.Gray);
+                rectangle.Opacity = BANNED_OPACITY;
+            }
+
+            (Constant.CurrentGrid.Children[1] as Rectangle).Opacity = UNCHECKED_OPACITY;
+            Constant.CurrentGrid.Children.Add(rectangle);
+
+            if (PickRadio.IsChecked == true)
+            {
+                (songInfoWindow.Content as Grid).Children.Clear();
+                string gridXaml = XamlWriter.Save(Constant.CurrentGrid);
+                StringReader stringReader = new StringReader(gridXaml);
+                XmlReader xmlReader = XmlReader.Create(stringReader);
+                Grid newGrid = (Grid)XamlReader.Load(xmlReader);
+                newGrid.Width = 300;
+                (newGrid.Children[0] as Rectangle).Width = 300;
+                (newGrid.Children[1] as Rectangle).Width = 300;
+                (newGrid.Children[5] as Rectangle).Width = 300;
+                newGrid.Margin = new Thickness(980, 660, 0, 0);
+                (songInfoWindow.Content as Grid).Children.Add(newGrid);
 
             }
+
+            
+            Constant.CurrentGrid = null;
         }
 
 
+        private void MapPoolStatusReset(object sender, RoutedEventArgs e)
+        {
+            if (Constant.CurrentGrid == null)
+            {
+                Console.WriteLine("你没有选择谱面！");
+            }
+            if (Constant.CurrentGrid.Children[Constant.CurrentGrid.Children.Count - 1] is Rectangle)
+            {
+
+                Constant.CurrentGrid.Children.RemoveAt(Constant.CurrentGrid.Children.Count - 1);
+            }
+
+        }
 
         private void ReadData()
         {
@@ -275,7 +287,7 @@ namespace MatchLiveHelper
                             {
                                 if (file.ToLower().EndsWith(map.BeatmapId + ".png"))
                                 {
-                                    Constant.BgImages.Add(file, LoadImage(file));
+                                    Constant.BgImages.Add(map.BeatmapId, LoadImage(file));
                                 }
                             }
                             );
@@ -284,6 +296,7 @@ namespace MatchLiveHelper
 
             }
             );
+
         }
 
         private BitmapImage LoadImage(string file)

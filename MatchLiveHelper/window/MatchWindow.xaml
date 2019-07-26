@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MatchLiveHelper"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Loaded="Init"  Topmost="True"
         Title="对阵界面" Height="720" Width="1280" Top="0" Left="0"
 		WindowStyle="None"
 		AllowsTransparency="True"
@@ -13,7 +13,7 @@
    
     <Grid>
 
-        <Image Source="/Image/background.jpg" Stretch="Fill"/>
+        <Image Source="/Image/match_bg.jpg" Stretch="Fill"/>
         <Image Name="logo" HorizontalAlignment="Center" VerticalAlignment="Top"  Stretch="None"/>
         <Image Name="RedCircle"  Source="/Image/blue_circle.png" Height="370" Width="370" Margin="681,187,229,163" />
         <Image Name="BlueCircle" Source="/Image/red_circle.png" Height="370" Width="370" Margin="229,187,681,163"  />

@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:MatchLiveHelper"
         mc:Ignorable="d"
         Title="主窗口" Height="720" Width="1280" Top="0" Left="0"
-		WindowStyle="None"
-		AllowsTransparency="True"
-		Opacity="0.2">
+		WindowStyle="None" Loaded="Init" Topmost="True"
+		AllowsTransparency="True">
     <Grid>
-        
+        <Image Source="/Image/match_bg.jpg" Stretch="Fill"/>
+        <Image Name="schedule" Stretch="Uniform" />
+        <Image Name="logo" HorizontalAlignment="Center" VerticalAlignment="Top"  Stretch="None"/>
     </Grid>
 </Window>
