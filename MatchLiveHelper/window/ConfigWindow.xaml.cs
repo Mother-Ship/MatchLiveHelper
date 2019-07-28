@@ -72,6 +72,8 @@ namespace MatchLiveHelper
 
             //输出提示语
             Console.WriteLine("初始化完成！");
+            Console.WriteLine("去除置顶功能说明：请务必在所有osu!子客户端启动完成后使用，否则会启动不全");
+            Console.WriteLine("子客户端全部启动完成后，可随意手动重启单个子客户端，重启后再次点击去除置顶即可");
             WindowComboBox.IsEnabled = true;
 
 
@@ -135,7 +137,10 @@ namespace MatchLiveHelper
         {
 
             //取消osu!小窗口置顶，并且将小窗口绑定到管理器大窗口
-            TournamentModifyUtil.CancelOsuTopMost();
+          
+                TournamentModifyUtil.CancelOsuTopMost();
+            
+            
 
 
         }

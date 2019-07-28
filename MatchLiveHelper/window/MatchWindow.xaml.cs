@@ -26,8 +26,8 @@ namespace MatchLiveHelper
             BlueLogo.Source = Constant.BlueLogo;
 
 
-            RedPlayers.Content = Constant.RedPlayers.Replace(",", "\r\n");
-            BluePlayers.Content = Constant.BluePlayers.Replace(",", "\r\n");
+            RedPlayers.Text = Constant.RedPlayers.Replace(",", "\r\n");
+            BluePlayers.Text = Constant.BluePlayers.Replace(",", "\r\n");
             RedTeamName.Content = Constant.RedTeamName;
             BlueTeamName.Content = Constant.BlueTeamName;
             Time.Content = Constant.Time;

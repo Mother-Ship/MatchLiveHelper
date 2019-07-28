@@ -48,7 +48,8 @@ namespace MatchLiveHelper.util
                         var row = sheet.GetRow(i);
                         if (row == null || row.GetCell(row.FirstCellNum).ToString().Equals("")) continue;
 
-                        if (!row.GetCell(row.FirstCellNum).ToString().StartsWith("http"))
+                        //处理云选图的注释部分
+                        if (!row.GetCell(row.FirstCellNum).ToString().StartsWith("http")&& !row.GetCell(row.FirstCellNum).ToString().StartsWith("*"))
                         {
                             var pool = new MapPool
                             {

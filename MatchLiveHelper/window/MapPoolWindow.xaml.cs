@@ -48,7 +48,7 @@ namespace MatchLiveHelper
                 while (!end)
                 {
 
-                    end = count < 3;
+                    end = count <= 3;
 
                     switch (count)
                     {
