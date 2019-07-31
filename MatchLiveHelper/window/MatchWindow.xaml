@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MatchLiveHelper"
         mc:Ignorable="d" Loaded="Init"  Topmost="True"
         Title="对阵界面" Height="720" Width="1280" Top="0" Left="0"
-		WindowStyle="None"
+		WindowStyle="None" 
 		AllowsTransparency="True"
        
 		>
@@ -17,16 +17,16 @@
         <Image Name="logo" HorizontalAlignment="Center" VerticalAlignment="Top"  Stretch="None"/>
         <Image Name="RedCircle"  Source="/Image/red_circle.png" Height="370" Width="370" Margin="681,187,229,163" />
         <Image Name="BlueCircle" Source="/Image/blue_circle.png" Height="370" Width="370" Margin="229,187,681,163"  />
-        <Image Name="RedLogo"  Height="110" Width="110" Margin="355,269,815,341"/>
-        <Image Name="BlueLogo"  Height="110" Width="110" Margin="815,269,355,341"/>
+        <Image Name="BlueLogo"  Height="110" Width="110" Margin="355,269,815,341"/>
+        <Image Name="RedLogo"  Height="110" Width="110" Margin="815,269,355,341"/>
         <Label Content="敬请期待"  VerticalAlignment="Top"  HorizontalAlignment="Center"  FontSize="20" FontFamily="等线" Margin="0,542,0,0" Foreground="#565656" />
         <Label Name="Stage" Content=""  VerticalAlignment="Top"  HorizontalAlignment="Center" FontSize="32" Margin="0,572,0,0" Foreground="#565656"/>
         <Label Name="Time" Content=""  VerticalAlignment="Top"  HorizontalAlignment="Center"  FontSize="20" FontFamily="等线" Margin="0,627,0,0" Foreground="#565656"/>
-        <TextBlock Name="BluePlayers" LineHeight="30"  FlowDirection="RightToLeft" Width="200" Height="300"  FontSize="20" FontFamily="等线" Foreground="#854a48" Margin="1,250,1079,170" />
-        <TextBlock Name="RedPlayers" LineHeight="30"  Width="200" Height="300"  FontSize="20" FontFamily="等线" Foreground="#2c585e" Margin="1084,250,0,170" />
-        <Label Name="BlueTeamName" Content=""  VerticalAlignment="Top"  FontSize="30" FontFamily="等线" Foreground="#854a48" Margin="0,400,460,0" HorizontalAlignment="Center"  />
-        <Label Name="RedTeamName" Content=""  VerticalAlignment="Top"  FontSize="30" FontFamily="等线" Foreground="#2c585e" Margin="460,400,0,0"  HorizontalAlignment="Center" />
-        <Label  Content="蓝队"  VerticalAlignment="Top"  FontSize="24" FontFamily="等线" Foreground="#854a48" Margin="0,475,460,0" HorizontalAlignment="Center"  />
-        <Label  Content="红队"  VerticalAlignment="Top"  FontSize="24" FontFamily="等线" Foreground="#2c585e" Margin="460,475,0,0"  HorizontalAlignment="Center" />
+        <TextBlock Name="BluePlayers" LineHeight="30"  FlowDirection="RightToLeft" Width="200" Height="300"  FontSize="20" FontFamily="等线" Foreground="#2c585e" Margin="1,250,1079,170" />
+        <TextBlock Name="RedPlayers" LineHeight="30"  Width="200" Height="300"  FontSize="20" FontFamily="等线" Foreground="#854a48" Margin="1084,250,0,170" />
+        <TextBlock MaxWidth="330"  TextWrapping = "Wrap" TextAlignment="Center" Name="BlueTeamName" VerticalAlignment="Top"  FontSize="30" FontFamily="等线" Foreground="#2c585e" Margin="0,400,460,0" HorizontalAlignment="Center"  />
+        <TextBlock MaxWidth="330" TextWrapping = "Wrap" TextAlignment="Center" Name="RedTeamName"    VerticalAlignment="Top"  FontSize="30" FontFamily="等线" Foreground="#854a48" Margin="460,400,0,0"  HorizontalAlignment="Center" />
+        <Label  Content="蓝队"  VerticalAlignment="Top"  FontSize="24" FontFamily="等线" Foreground="#2c585e" Margin="0,475,460,0" HorizontalAlignment="Center"  />
+        <Label  Content="红队"  VerticalAlignment="Top"  FontSize="24" FontFamily="等线" Foreground="#854a48" Margin="460,475,0,0"  HorizontalAlignment="Center" />
     </Grid>
 </Window>

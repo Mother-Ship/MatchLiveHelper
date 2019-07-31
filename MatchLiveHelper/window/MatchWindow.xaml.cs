@@ -28,8 +28,8 @@ namespace MatchLiveHelper
 
             RedPlayers.Text = Constant.RedPlayers.Replace(",", "\r\n");
             BluePlayers.Text = Constant.BluePlayers.Replace(",", "\r\n");
-            RedTeamName.Content = Constant.RedTeamName;
-            BlueTeamName.Content = Constant.BlueTeamName;
+            RedTeamName.Text = Constant.RedTeamName.Replace("\\r\\n", "\r\n");
+            BlueTeamName.Text = Constant.BlueTeamName.Replace("\\r\\n", "\r\n");
             Time.Content = Constant.Time;
             Stage.Content = Constant.Stage;
             RotateBlue();

@@ -215,10 +215,10 @@ namespace MatchLiveHelper
             if (Constant.CurrentGrid == null)
             {
                 Console.WriteLine("你没有选择谱面！");
+                return;
             }
             if (Constant.CurrentGrid.Children[Constant.CurrentGrid.Children.Count - 1] is Rectangle)
             {
-
                 Constant.CurrentGrid.Children.RemoveAt(Constant.CurrentGrid.Children.Count - 1);
             }
 
@@ -233,7 +233,8 @@ namespace MatchLiveHelper
             {
                 FileStream fs = new FileStream(Environment.CurrentDirectory + "\\data\\config.ini", FileMode.Create);
                 StreamWriter sw = new StreamWriter(fs);
-                sw.Write("[Match]\r\n" +
+                sw.Write("//请使用英文逗号隔开选手ID" +
+                    "[Match]\r\n" +
                     "Stage = 小组赛\r\n" +
                     "Time = 2019-7-22 19:43\r\n" +
                     "[Blue]\r\n" +
@@ -258,7 +259,7 @@ namespace MatchLiveHelper
                 {
                     Constant.RedLogo = LoadImage(file);
                 }
-                if (file.ToLower().EndsWith("red_logo.png"))
+                if (file.ToLower().EndsWith("blue_logo.png"))
                 {
                     Constant.BlueLogo = LoadImage(file);
                 }

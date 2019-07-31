@@ -160,6 +160,7 @@ namespace MatchLiveHelper
                                 title.VerticalAlignment = VerticalAlignment.Top;
                                 title.TextAlignment = TextAlignment.Center;
                                 title.Margin = new Thickness(0, 9, 0, 0);
+                                title.FontFamily =  new FontFamily("等线");
 
                                 TextBlock mapperAndDifficulty = new TextBlock();
                                 mapperAndDifficulty.Foreground = new SolidColorBrush(Colors.White);
