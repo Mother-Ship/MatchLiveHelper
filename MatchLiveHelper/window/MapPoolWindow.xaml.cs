@@ -20,7 +20,7 @@ namespace MatchLiveHelper
         private const double MAPPOOL_TB_IMAGE_WIDTH = 450;
         private const double MAPPOOL_IMAGE_HEIGHT = 50;
         private const double MAPPOOL_IMAGE_VERTICAL_SPACE = 10;
-        private const double MAPPOOL_IMAGE_HORIZONAL_SPACE = 18;
+        private const double MAPPOOL_IMAGE_HORIZONAL_SPACE = 17;
         private const double CHECKED_OPACITY = 0.2;
         private const double UNCHECKED_OPACITY = 0.5;
         public MapPoolWindow()
@@ -32,7 +32,7 @@ namespace MatchLiveHelper
 
 
             //根据图池是否需要换行，以及是否是下一个MOD图池来切换纵坐标
-            double y = 140;
+            double y = 130;
 
             //根据图池谱面数量不同，计算出水平居中的横坐标
             double x;
